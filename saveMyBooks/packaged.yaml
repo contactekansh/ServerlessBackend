@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  saveMyBooks:
+    Properties:
+      CodeUri: s3://learnbucket123/4b3a84a91e9cbf96b7c38779a0ea7dac
+      Description: ''
+      Environment:
+        Variables:
+          TABLE_NAME: MyBookShelf
+      Events:
+        Api1:
+          Properties:
+            Method: POST
+            Path: /saveBooks
+          Type: Api
+      FunctionName: saveMyBooks
+      Handler: index.handler
+      MemorySize: 128
+      Role: arn:aws:iam::451537815161:role/LambdaAccessRole
+      Runtime: nodejs8.10
+      Timeout: 3
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  getMyBooks:
+    Properties:
+      CodeUri: s3://learnbucket123/23ac6ad89f0c729d72178d28c93e9f34
+      Description: ''
+      Environment:
+        Variables:
+          TABLE_NAME: MyBookShelf
+      Events:
+        Api1:
+          Properties:
+            Method: GET
+            Path: /listBooks
+          Type: Api
+      FunctionName: getMyBooks
+      Handler: index.handler
+      MemorySize: 128
+      Role: arn:aws:iam::451537815161:role/LambdaAccessRole
+      Runtime: nodejs8.10
+      Timeout: 3
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
